@@ -17,8 +17,8 @@ function Man(name, facialHair) {
 
   that.getFacialHair= function (){
     return that.facialHair;
-	};
-	
+  };
+  
   return that;
 }
 
