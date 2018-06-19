@@ -2,7 +2,7 @@ function Person(name) {
 	let that = {};
 	that.name = name;
 	that.getName = function () {
-		return this.name;
+		return that.name;
 	};
 	return that;
 }
