@@ -1,6 +1,8 @@
 
 .gitignore
 .vscode/
+.eslintrc.json
+
 node_modules/.bin/
 node_modules/acorn-jsx/
 node_modules/acorn/
@@ -210,6 +212,6 @@ node_modules/yallist/
 node_modules
 Wo
 uld remove package-lock.json
-package.json
+
 package-lock.
 json
