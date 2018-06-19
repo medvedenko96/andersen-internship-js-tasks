@@ -1,7 +1,10 @@
 const Universe = (function Universe() {
   let instance;
+
   function Singleton() {
-    if (instance) return instance;
+    if (instance) {
+      return instance;
+    }
     this.size = 100;
     instance = this;
   }
