@@ -7,7 +7,7 @@ Person.prototype.getName = function() {
 };
 
 function Man(name, facialHair) {
-	Person.apply(this, arguments);
+	Person.call(this, name);
 	this.facialHair = facialHair;
 }
 
@@ -15,7 +15,7 @@ Man.prototype = Object.create(Person.prototype);
 Man.prototype.constructor = Man;
 
 Man.prototype.getName = function () {
-	return `Name: ${Person.prototype.getName.apply(this, arguments)}`;
+	return `Name: ${Person.prototype.getName.call(this, this.name)}`;
 };
 
 Man.prototype.getFacialHair = function () {
