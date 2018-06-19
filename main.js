@@ -11,7 +11,7 @@ function Man(name, facialHair) {
 	this.facialHair = facialHair;
 }
 
-Person.prototype = Object.create(Man.prototype);
+Man.prototype = Object.create(Person.prototype);
 Man.prototype.constructor = Man;
 
 Man.prototype.getName = function () {
