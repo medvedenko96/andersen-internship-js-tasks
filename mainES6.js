@@ -1,26 +1,26 @@
 class Person {
-	constructor (name) {
-		this.name = name;
-	}
+  constructor (name) {
+    this.name = name;
+  }
 
-	getName () {
-		return this.name;
-	}
+  getName () {
+    return this.name;
+  }
 }
 
 class Man extends Person {
-	constructor (name, facialHair) {
-		super(name);
-		this.facialHair = facialHair;
-	}
+  constructor (name, facialHair) {
+    super(name);
+    this.facialHair = facialHair;
+  }
 
-	getName () {
-		return `Name: ${super.getName()}`;
-	}
+  getName () {
+    return `Name: ${super.getName()}`;
+  }
 
-	getFacialHair () {
-		return this.facialHair;
-	}
+  getFacialHair () {
+    return this.facialHair;
+  }
 }
 
 const person = new Person('somebody');

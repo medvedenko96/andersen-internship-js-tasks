@@ -15,7 +15,7 @@ Man.prototype = Object.create(Person.prototype);
 Man.prototype.constructor = Man;
 
 Man.prototype.getName = function () {
-  return `Name: ${Person.prototype.getName.call(this, this.name)}`;
+  return `Name: ${Person.prototype.getName.call(this)}`;
 };
 
 Man.prototype.getFacialHair = function () {
