@@ -2,18 +2,19 @@ const Universe = (function Universe() {
   let instance;
   function Singleton() {
     if (instance) return instance;
-		this.size = 100;
+    this.size = 100;
     instance = this;
   }
+
   Singleton.prototype.getSize = function getSize() {
     return this.size;
   };
+
   Singleton.prototype.setSize = function setSize(size) {
     this.size = size;
   };
   return Singleton;
 }());
-
 
 const a = new Universe();
 const b = new Universe();
