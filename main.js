@@ -13,6 +13,7 @@ const Universe = (function Universe() {
   Singleton.prototype.setSize = function setSize(size) {
     this.size = size;
   };
+
   return Singleton;
 }());
 
