@@ -38,7 +38,7 @@ function Person(name) {
   this.name = name;
 }
 
-Person.prototype.getName = function() {
+Person.prototype.getName = function getName() {
   return this.name;
 };
 
@@ -50,11 +50,11 @@ function Man(name, facialHair) {
 Man.prototype = Object.create(Person.prototype);
 Man.prototype.constructor = Man;
 
-Man.prototype.getName = function () {
+Man.prototype.getName = function getName() {
   return `Name: ${Person.prototype.getName.call(this)}`;
 };
 
-Man.prototype.getFacialHair = function () {
+Man.prototype.getFacialHair = function getFacialHair() {
   return this.facialHair;
 };
 
