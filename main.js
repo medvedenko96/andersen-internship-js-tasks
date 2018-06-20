@@ -11,10 +11,11 @@ function Person(name) {
 
 function Man(name, facialHair) {
   const that = Person(name);
+  const getNamePerson = that.getName;
   that.facialHair = facialHair;
 
   that.getName = function getName() {
-    return `Name: ${that.name}`;
+    return `Name: ${getNamePerson(that.name)}`;
   };
 
   that.getFacialHair = function getFacialHair() {
