@@ -19,7 +19,7 @@ function getUserDataPromise() {
     .then((json) => {
       const { getUsersData } = json;
       if (getUsersData === true) {
-        return fetch(urlUsers, { method: 'GET' })
+        fetch(urlUsers, { method: 'GET' })
           .then(res => res.json())
           .then(jsonUsers => console.log(jsonUsers))
           .catch(e => console.log(e));
@@ -53,11 +53,41 @@ const urls = [
   'http://www.json-generator.com/api/json/get/ceQMMKpidK',
 ];
 
-
-
-
-/*
-const getUrlsConsistent = async () => {
-
+const reqConsistently = async (arrUrls) => {
+  const result = [];
+  try {
+    for (let i = 0; i < arrUrls.length; i += 1) {
+      result.push(await (await fetch(arrUrls[i], { method: 'GET' })).json());
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  console.log(result);
 };
-*/
+
+reqConsistently(urls);
+
+const reqParallel = arrUrls => Promise.all(arrUrls.map((someUrl) => {
+  fetch(someUrl, { method : 'GET' })
+    .then(res => res.json())
+    .then(json => console.log(json));
+}));
+
+reqParallel(urls);
+
+//  ===============================================
+
+function getResolvedPromise(value) {
+  return new Promise((resolve) => {
+    resolve(value);
+  });
+}
+
+getResolvedPromise(500)
+  .then((value) => {
+    if (value > 300) {
+      throw new Error('Ошибка');
+    }
+  })
+  .catch(e => console.log(e))
+  .finally(() => console.log('This is Finally!'));
