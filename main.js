@@ -1,6 +1,5 @@
 // ========================= task-1 =========================
 
-
 const Universe = (function Universe() {
   let instance;
 
