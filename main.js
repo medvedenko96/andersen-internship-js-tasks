@@ -19,7 +19,7 @@ function getUserDataPromise() {
     .then((json) => {
       const { getUsersData } = json;
       if (getUsersData === true) {
-        fetch(urlUsers, { method: 'GET' })
+        return fetch(urlUsers, { method: 'GET' })
           .then(res => res.json())
           .then(jsonUsers => console.log(jsonUsers))
           .catch(e => console.log(e));
@@ -50,9 +50,14 @@ const urls = [
   'http://www.json-generator.com/api/json/get/cguaPsRxAi',
   'http://www.json-generator.com/api/json/get/cfDZdmxnDm',
   'http://www.json-generator.com/api/json/get/cfkrfOjrfS',
-  'http://www.json-generator.com/api/json/get/ceQMMKpidK'
+  'http://www.json-generator.com/api/json/get/ceQMMKpidK',
 ];
 
+
+
+
+/*
 const getUrlsConsistent = async () => {
 
 };
+*/
