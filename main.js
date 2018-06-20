@@ -63,3 +63,5 @@ console.log(person.getName()); // somebody
 const man = new Man('Viktor', true);
 console.log(man.getName()); // Name: Viktor
 console.log(man.getFacialHair()); // true
+
+// ========================= task-3 =========================
