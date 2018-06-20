@@ -5,6 +5,7 @@ const Universe = (function Universe() {
     if (instance) {
       return instance;
     }
+
     this.size = 100;
     instance = this;
   }
