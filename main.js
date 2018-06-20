@@ -1,6 +1,6 @@
 // ========================= task-1 =========================
 
-const Universe = (function Universe() {
+/* const Universe = (function Universe() {
   let instance;
 
   function Singleton() {
@@ -29,11 +29,11 @@ const b = new Universe();
 console.log(a === b); // должны получить true
 console.log(a.getSize(), b.getSize()); // 100, 100
 a.setSize(200);
-console.log(a.getSize(), b.getSize()); // 200, 200
+console.log(a.getSize(), b.getSize()); // 200, 200 */
 
 // ========================= task-2 =========================
 
-function Person(name) {
+/* function Person(name) {
   this.name = name;
 }
 
@@ -62,42 +62,43 @@ console.log(person.getName()); // somebody
 
 const man = new Man('Viktor', true);
 console.log(man.getName()); // Name: Viktor
-console.log(man.getFacialHair()); // true
+console.log(man.getFacialHair()); // true */
 
 // ========================= task-3 =========================
 
-(function task3() {
-  function Person(name) {
-    const that = {};
-    that.name = name;
+/* function Person(name) {
+  const that = {};
+  that.name = name;
 
-    that.getName = function getName() {
-      return that.name;
-    };
+  that.getName = function getName() {
+    return that.name;
+  };
 
-    return that;
-  }
+  return that;
+}
 
-  function Man(name, facialHair) {
-    const that = Person(name);
-    that.facialHair = facialHair;
-    const getNamePerson = that.getName;
+function Man(name, facialHair) {
+  const that = Person(name);
+  that.facialHair = facialHair;
+  const getNamePerson = that.getName;
 
-    that.getName = function getName() {
-      return `Name: ${getNamePerson(that.name)}`;
-    };
+  that.getName = function getName() {
+    return `Name: ${getNamePerson(that.name)}`;
+  };
 
-    that.getFacialHair = function getFacialHair() {
-      return that.facialHair;
-    };
+  that.getFacialHair = function getFacialHair() {
+    return that.facialHair;
+  };
 
-    return that;
-  }
+  return that;
+}
 
-  const person = Person('somebody');
-  console.log(person.getName()); // somebody
+const person = Person('somebody');
+console.log(person.getName()); // somebody
 
-  const man = Man('Viktor', true);
-  console.log(man.getName()); // Name: Viktor
-  console.log(man.getFacialHair());// true
-}());
+const man = Man('Viktor', true);
+console.log(man.getName()); // Name: Viktor
+console.log(man.getFacialHair());// true */
+
+// ========================= task-4 =========================
+
