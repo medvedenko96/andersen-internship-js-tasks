@@ -83,7 +83,6 @@ console.log(man.getFacialHair()); // true
     that.facialHair = facialHair;
     const getNamePerson = that.getName;
 
-
     that.getName = function getName() {
       return `Name: ${getNamePerson(that.name)}`;
     };
