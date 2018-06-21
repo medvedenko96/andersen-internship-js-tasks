@@ -67,13 +67,23 @@ const reqConsistently = async (arrUrls) => {
 
 reqConsistently(urls);
 
-const reqParallel = arrUrls => Promise.all(arrUrls.map((someUrl) => {
-  fetch(someUrl, { method : 'GET' })
-    .then(res => res.json())
-    .then(json => console.log(json));
-}));
+const arrPromise = urls.map(someUrl => fetch(someUrl).then(res => res.text()));
+Promise.all(arrPromise).then(value => console.log(value));
 
-reqParallel(urls);
+function Consistently(arrUrls) {
+  const results = [];
+  let chain = Promise.resolve();
+
+  arrUrls.forEach((someUrl) => {
+    chain = chain
+      .then(() => fetch(someUrl)
+        .then(response => response.json()))
+      .then(result => results.push(result));
+  });
+  chain.then(() => console.log(results));
+}
+
+Consistently(urls);
 
 //  ===============================================
 
@@ -91,3 +101,4 @@ getResolvedPromise(500)
   })
   .catch(e => console.log(e))
   .finally(() => console.log('This is Finally!'));
+
