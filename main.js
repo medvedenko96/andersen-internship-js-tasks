@@ -102,3 +102,42 @@ console.log(man.getFacialHair());// true */
 
 // ========================= task-4 =========================
 
+// ========================= task-6 =========================
+
+
+Object.prototype.myApply = function myApply(obj, arr) {
+  return this.call(obj, arr.reduce((x, y) => x + y));
+};
+
+Object.prototype.myCall = function myCall(obj, ...arr) {
+  return this.call(obj, arr.reduce((x, y) => x + y));
+};
+
+Object.prototype.myBindByCall = function myBindByCall(obj, ...arr) {
+  const that = this;
+  return function () {
+    return that.call(obj, arr.reduce((x, y) => x + y));
+  };
+};
+
+const obj1 = {
+  a: 20,
+  foo: function foo(...numbers) {
+    return this.a + numbers.reduce((prev, curr) => prev + curr);
+  },
+};
+
+const obj2 = {
+  a: 30,
+};
+
+console.log(obj1.foo.myApply(obj2, [5, 5])); // 40
+console.log(obj1.foo.myApply(obj2, [5, 5, 10])); // 50
+console.log(obj1.foo.myCall(obj2, 5, 5, 20)); // 60
+console.log(obj1.foo.myCall(obj2, 5, 5, 10, 20)); // 70
+
+const f1 = obj1.foo.myBindByCall(obj2, 5, 5);
+console.log(f1()); // 40
+const f2 = obj1.foo.myBindByCall(obj2, 5, 5, 10);
+console.log(f2()); // 50
+
