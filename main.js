@@ -43,6 +43,7 @@ const getUserDataAsync = async () => {
 
 getUserDataAsync();
 
+
 //  ===============================================
 
 const urls = [
@@ -85,7 +86,22 @@ function Consistently(arrUrls) {
 
 Consistently(urls);
 
+const results = [];
+
+function consistentlyReduce(arr) {
+  return arr.reduce((promise, item) => {
+    return promise.then(() => {
+      return fetch(item)
+        .then(res => res.text())
+        .then(result => results.push(result));
+    }).catch(console.error);
+  }, Promise.resolve());
+}
+
+consistentlyReduce(urls).then(() => console.log(results));
+
 //  ===============================================
+
 
 function getResolvedPromise(value) {
   return new Promise((resolve) => {
@@ -101,4 +117,3 @@ getResolvedPromise(500)
   })
   .catch(e => console.log(e))
   .finally(() => console.log('This is Finally!'));
-
