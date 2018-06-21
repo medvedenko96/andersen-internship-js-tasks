@@ -106,18 +106,15 @@ console.log(man.getFacialHair());// true */
 
 
 Object.prototype.myApply = function myApply(obj, arr) {
-  return this.call(obj, arr.reduce((x, y) => x + y));
+  return this.call(obj, ...arr);
 };
 
 Object.prototype.myCall = function myCall(obj, ...arr) {
-  return this.call(obj, arr.reduce((x, y) => x + y));
+  return this.apply(obj, arr);
 };
 
 Object.prototype.myBindByCall = function myBindByCall(obj, ...arr) {
-  const that = this;
-  return function () {
-    return that.call(obj, arr.reduce((x, y) => x + y));
-  };
+  return () => this.call(obj, ...arr);
 };
 
 const obj1 = {
