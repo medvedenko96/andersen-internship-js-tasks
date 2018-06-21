@@ -102,3 +102,11 @@ console.log(man.getFacialHair());// true */
 
 // ========================= task-4 =========================
 
+// ========================= task-5 =========================
+
+Array.prototype.duplicate = function duplicate() {
+  return this.concat(this);
+};
+
+console.log([1, 2, 3, 4].duplicate()); // [1, 2, 3, 4, 1, 2, 3, 4]
+
