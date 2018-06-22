@@ -170,13 +170,8 @@ console.log(obj2);
 
 function myNew(func) {
   const that = {};
-  if (func.prototype !== null) {
-    that.__proto__ = func.prototype;
-  }
-  const ret = func.apply(that, Array.prototype.slice.call(arguments));
-  if ((typeof ret === 'object' || typeof ret === 'function') && ret !== null) {
-    return ret;
-  }
+  that.__proto__ = func.prototype;
+  func.apply(that);
   return that;
 }
 
