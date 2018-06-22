@@ -169,8 +169,7 @@ console.log(obj2);
 // =========================
 
 function myNew(func) {
-  const that = {};
-  that.__proto__ = func.prototype;
+  const that = Object.create(func.prototype);
   func.apply(that);
   return that;
 }
