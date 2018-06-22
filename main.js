@@ -232,3 +232,23 @@ Array.prototype.duplicate = function duplicate() {
 console.log([1, 2, 3, 4].duplicate()); // [1, 2, 3, 4, 1, 2, 3, 4]
 */
 
+// ========================= task-7 =========================
+
+function objectTree(str) {
+  const arr = str.split('.');
+  const obj = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      obj[arr[i]] = {};
+
+    } else {
+      let j = i - 1;
+      obj[arr[j]][arr[i]] = {};
+    }
+  }
+
+  return
+}
+
+objectTree('a.b.c.d');
