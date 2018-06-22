@@ -241,14 +241,13 @@ function objectTree(str) {
   for (let i = 0; i < arr.length; i++) {
     if (i === 0) {
       obj[arr[i]] = {};
-
     } else {
       let j = i - 1;
-      obj[arr[j]][arr[i]] = {};
+      obj[arr[j]]
     }
   }
 
-  return
+  console.log(arr);
 }
 
 objectTree('a.b.c.d');
