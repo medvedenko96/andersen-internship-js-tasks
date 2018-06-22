@@ -104,7 +104,7 @@ console.log(man.getFacialHair());// true */
 
 // ========================= task-6 =========================
 
-
+/*
 Object.prototype.myApply = function myApply(obj, arr) {
   return this.call(obj, ...arr);
 };
@@ -137,4 +137,57 @@ const f1 = obj1.foo.myBindByCall(obj2, 5, 5);
 console.log(f1()); // 40
 const f2 = obj1.foo.myBindByCall(obj2, 5, 5, 10);
 console.log(f2()); // 50
+*/
 
+// =========================
+
+/*
+function objectCreate(proto, someObj) {
+  function F() {}
+  F.prototype = proto;
+  const f = new F();
+  return Object.defineProperties(f, someObj);
+}
+
+const obj = {
+  a: 1,
+};
+
+const obj2 = objectCreate(obj, {
+  p: {
+    value: 20,
+  },
+  k: {
+    value: 30,
+  },
+});
+
+console.log(obj2);
+//  { p: 20, k: 30, __proto__: { a: 1 } }
+*/
+
+// =========================
+
+function myNew(func) {
+  const that = {};
+  if (func.prototype !== null) {
+    that.__proto__ = func.prototype;
+  }
+  const ret = func.apply(that, Array.prototype.slice.call(arguments));
+  if ((typeof ret === 'object' || typeof ret === 'function') && ret !== null) {
+    return ret;
+  }
+  return that;
+}
+
+function F() {
+  this.a = 10;
+}
+
+F.prototype.foo = function () {
+  return this.a;
+};
+
+const a = myNew(F);
+console.log(a); // { a: 10, __proto__: { foo, constructor } }
+console.log(a.foo()); // 10
