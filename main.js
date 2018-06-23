@@ -234,41 +234,19 @@ console.log([1, 2, 3, 4].duplicate()); // [1, 2, 3, 4, 1, 2, 3, 4]
 
 // ========================= task-7 =========================
 
-function objectHell(arg) {
-  return arg.split('.').reduceRight((previousValue, currentValue) => {
-    return { [currentValue]: previousValue };
-  }, null);
-}
+const objectHell = arg => arg.split('.').reduceRight((previousValue, currentValue) => {
+  return { [currentValue]: previousValue };
+}, null);
 
 console.log(objectHell('a.b.c.d'));
 
 //  ===============================================
 
-function union(arr1, arr2) {
-  //  return arr1.concat(arr2.filter(i => arr1.indexOf(i) === -1));
-  return [...new Set([...arr1, ...arr2])];
-}
+const union = (arr1, arr2) => [...new Set([...arr1, ...arr2])];
 
-function intersection(arr1, arr2) {
-  const arr = [];
-  arr1.forEach(currentValue => {
-    if (arr2.indexOf(currentValue) !== -1) {
-      arr.push(currentValue);
-    }
-  });
-  return arr;
-}
+const intersection = (arr1, arr2) => [...new Set(arr1)].filter(x => new Set(arr2).has(x));
 
-function diff(arr1, arr2) {
-  const arr = [];
-  arr1.forEach(currentValue => {
-    if (arr2.indexOf(currentValue) === -1) {
-      arr.push(currentValue);
-    }
-  });
-  return [...new Set([...arr])];
-}
-
+const diff = (arr1, arr2) => [...new Set(arr1)].filter(x => !new Set(arr2).has(x));
 
 console.log(union([4, 5, 7, 2, 1, 5], [1, 2, 3, 7, 9]));
 // [4, 5, 7, 2, 1, 3, 9]
@@ -290,27 +268,23 @@ const input = [
   'стрелка',
 ];
 
-function alphabetize(word) {
-  if (!word) {
-    return;
-  }
-  return word.split('').sort().join('');
-}
+const alphabetize = word => word.split('').sort().join('');
 
 function anagrams(words) {
   const result = [];
 
-  words.forEach(word => {
+  words.forEach((word) => {
     const sortedWord = alphabetize(word);
 
     if (result[sortedWord]) {
-      return result[sortedWord].push(word);
+      result[sortedWord].push(word);
     }
+
     result[sortedWord] = [word];
   });
+
   return result;
 }
-
 
 console.log(anagrams(input));
 
@@ -338,3 +312,4 @@ function add(x) {
 console.log(add(1)(2)(3)()); // 6
 console.log(add(1)(2)(3)(4) + 1); // 11
 console.log(add(1)(2)(3)(4)(5) + 1); // 16
+
