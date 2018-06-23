@@ -234,20 +234,107 @@ console.log([1, 2, 3, 4].duplicate()); // [1, 2, 3, 4, 1, 2, 3, 4]
 
 // ========================= task-7 =========================
 
-function objectTree(str) {
-  const arr = str.split('.');
-  const obj = {};
-
-  for (let i = 0; i < arr.length; i++) {
-    if (i === 0) {
-      obj[arr[i]] = {};
-    } else {
-      let j = i - 1;
-      obj[arr[j]]
-    }
-  }
-
-  console.log(arr);
+function objectHell(arg) {
+  return arg.split('.').reduceRight((previousValue, currentValue) => {
+    return { [currentValue]: previousValue };
+  }, null);
 }
 
-objectTree('a.b.c.d');
+console.log(objectHell('a.b.c.d'));
+
+//  ===============================================
+
+function union(arr1, arr2) {
+  //  return arr1.concat(arr2.filter(i => arr1.indexOf(i) === -1));
+  return [...new Set([...arr1, ...arr2])];
+}
+
+function intersection(arr1, arr2) {
+  const arr = [];
+  arr1.forEach(currentValue => {
+    if (arr2.indexOf(currentValue) !== -1) {
+      arr.push(currentValue);
+    }
+  });
+  return arr;
+}
+
+function diff(arr1, arr2) {
+  const arr = [];
+  arr1.forEach(currentValue => {
+    if (arr2.indexOf(currentValue) === -1) {
+      arr.push(currentValue);
+    }
+  });
+  return [...new Set([...arr])];
+}
+
+
+console.log(union([4, 5, 7, 2, 1, 5], [1, 2, 3, 7, 9]));
+// [4, 5, 7, 2, 1, 3, 9]
+console.log(intersection([1, 2, 3], [4, 3, 2])); // [2, 3]
+console.log(diff([1, 2, 3, 7, 9], [4, 5, 7, 2, 1, 5])); // [3, 9]
+console.log(diff([4, 5, 7, 2, 1, 5], [1, 2, 3, 7, 9])); // [4, 5]
+
+//  ===============================================
+
+const input = [
+  'вертикаль',
+  'кильватер',
+  'апельсин',
+  'спаниель',
+  'австралопитек',
+  'ватерполистка',
+  'кластер',
+  'сталкер',
+  'стрелка',
+];
+
+function alphabetize(word) {
+  if (!word) {
+    return;
+  }
+  return word.split('').sort().join('');
+}
+
+function anagrams(words) {
+  const result = [];
+
+  words.forEach(word => {
+    const sortedWord = alphabetize(word);
+
+    if (result[sortedWord]) {
+      return result[sortedWord].push(word);
+    }
+    result[sortedWord] = [word];
+  });
+  return result;
+}
+
+
+console.log(anagrams(input));
+
+//  ===============================================
+
+function add(x) {
+  let sum = x;
+
+  function next(y) {
+    if (y !== undefined) {
+      sum += y;
+      return next;
+    }
+
+    return sum;
+  }
+
+  next.toString = function () {
+    return sum;
+  };
+
+  return next;
+}
+
+console.log(add(1)(2)(3)()); // 6
+console.log(add(1)(2)(3)(4) + 1); // 11
+console.log(add(1)(2)(3)(4)(5) + 1); // 16
