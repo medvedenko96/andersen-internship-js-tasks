@@ -317,3 +317,83 @@ const a = myNew(F);
 console.log(a); // { a: 10, __proto__: { foo, constructor } }
 console.log(a.foo()); // 10
 */
+// ========================= task-7 =========================
+
+/*
+const objectHell = arg => arg.split('.').reduceRight((prev, cur) => ({ [cur]: prev }), null);
+
+console.log(objectHell('a.b.c.d'));
+
+//  ===============================================
+
+const union = (arr1, arr2) => [...new Set([...arr1, ...arr2])];
+
+const intersection = (arr1, arr2) => [...new Set(arr1)].filter(x => new Set(arr2).has(x));
+
+const diff = (arr1, arr2) => [...new Set(arr1)].filter(x => !new Set(arr2).has(x));
+
+console.log(union([4, 5, 7, 2, 1, 5], [1, 2, 3, 7, 9]));
+// [4, 5, 7, 2, 1, 3, 9]
+console.log(intersection([1, 2, 3], [4, 3, 2])); // [2, 3]
+console.log(diff([1, 2, 3, 7, 9], [4, 5, 7, 2, 1, 5])); // [3, 9]
+console.log(diff([4, 5, 7, 2, 1, 5], [1, 2, 3, 7, 9])); // [4, 5]
+
+//  ===============================================
+
+const input = [
+  'вертикаль',
+  'кильватер',
+  'апельсин',
+  'спаниель',
+  'австралопитек',
+  'ватерполистка',
+  'кластер',
+  'сталкер',
+  'стрелка',
+];
+
+const alphabetize = word => word.split('').sort().join('');
+
+function anagrams(words) {
+  const result = [];
+
+  words.forEach((word) => {
+    const sortedWord = alphabetize(word);
+
+    if (result[sortedWord]) {
+      result[sortedWord].push(word);
+    }
+
+    result[sortedWord] = [word];
+  });
+
+  return result;
+}
+
+console.log(anagrams(input));
+
+//  ===============================================
+
+function add(x) {
+  let sum = x;
+
+  function next(y) {
+    if (y !== undefined) {
+      sum += y;
+      return next;
+    }
+
+    return sum;
+  }
+
+  next.toString = function () {
+    return sum;
+  };
+
+  return next;
+}
+
+console.log(add(1)(2)(3)()); // 6
+console.log(add(1)(2)(3)(4) + 1); // 11
+console.log(add(1)(2)(3)(4)(5) + 1); // 16
+*/
