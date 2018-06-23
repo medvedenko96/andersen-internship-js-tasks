@@ -234,9 +234,7 @@ console.log([1, 2, 3, 4].duplicate()); // [1, 2, 3, 4, 1, 2, 3, 4]
 
 // ========================= task-7 =========================
 
-const objectHell = arg => arg.split('.').reduceRight((previousValue, currentValue) => {
-  return { [currentValue]: previousValue };
-}, null);
+const objectHell = arg => arg.split('.').reduceRight((prev, cur) => ({ [cur]: prev }), null);
 
 console.log(objectHell('a.b.c.d'));
 
